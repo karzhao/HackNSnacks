@@ -125,6 +125,9 @@ public class CharacterController : MonoBehaviour
     {
         string dataString = string.Join(",", data);
         PlayerPrefs.SetString("MyData", dataString);
+        PlayerPrefs.SetInt("TotalProtein", protein);
+        PlayerPrefs.SetInt("TotalCarbs", carbs);
+        PlayerPrefs.SetInt("TotalFat", fat);
         PlayerPrefs.Save();
     }
 

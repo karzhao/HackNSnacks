@@ -29,11 +29,23 @@ public class EndScreenScript : MonoBehaviour
         }
         myText.text = foods;
 
-        string prompt = $"In a day I ate these foods: {string.Join(", ", names)}. In less than 3 sentences, explain how balanced my diet was and how processed. Give feedback on macro/micro nutrients, variety, and healthiness. Be optimistic.";
+        getFeedback();
+        // string prompt = $"In a day I ate these foods: {string.Join(", ", names)}. In less than 3 sentences, explain how balanced my diet was and how processed. Give feedback on macro/micro nutrients, variety, and healthiness. Be optimistic.";
 
-        StartCoroutine(GetAIResponse(prompt));
+        // StartCoroutine(GetAIResponse(prompt));
     }
+    
+    private void getFeedback() {
+        int protein = PlayerPrefs.GetInt("TotalProtein", 0);
+        int carbs = PlayerPrefs.GetInt("TotalCarbs", 0);
+        int fat = PlayerPrefs.GetInt("TotalFat", 0);
 
+        feedback =
+        "Total nutrients eaten\n\n" +
+        $"Protein: {protein} g\n" +
+        $"Carbohydrates: {carbs} g\n" +
+        $"Fat: {fat} g";
+    }
     private IEnumerator GetAIResponse(string prompt)
     {
         // Manually construct the JSON string
